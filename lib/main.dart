@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/components/contact_info.dart';
+import 'package:flutter_app/components/primary_info.dart';
 
 void main() {
   runApp(const NinjaApp());
@@ -46,62 +48,17 @@ class _NinjaHomeState extends State<NinjaHome> {
       body: const Padding(
         padding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 0.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'NAME',
-              style: TextStyle(
-                letterSpacing: 2.0,
-                color: Colors.grey,
-                fontSize: 15.0
-              ),
-            ),
-            SizedBox(height: 5.0),
-            Text(
-              'Ninja 1',
-              style: TextStyle(
-                color: Colors.amber,
-                fontSize: 40.0,
-                letterSpacing: 2.0,
-              ),
-            ),
-            SizedBox(height: 5.0),
-            Text(
-              'NINJA LEVEL',
-              style: TextStyle(
-                letterSpacing: 2.0,
-                color: Colors.grey,
-                fontSize: 15.0
-              ),
-            ),
-            SizedBox(height: 5.0),
-            Text(
-              '1',
-              style: TextStyle(
-                color: Colors.amber,
-                fontSize: 40.0,
-                letterSpacing: 2.0,
-              ),
-            ),
-            SizedBox(height: 5.0),
-            Row(
-              children: [
-                Icon(
-                  Icons.mail,
-                  color: Colors.grey,
-                ),
-                SizedBox(width: 3.0),
-                Text(
-                  'ninja@flutter.com',
-                  style: TextStyle(
-                    color: Colors.grey
-                  ),
-                )
-              ],
-            )
-          ]
-        ),
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              PrimaryInfo(label: 'name', content: 'Ninja 1'),
+              SizedBox(height: 5.0),
+              PrimaryInfo(label: 'ninja level', content: '1'),
+              SizedBox(height: 5.0),
+              ContactInfo(type: 'email', content: 'ninja@flutter.com'),
+              SizedBox(height: 5.0),
+              ContactInfo(type: 'phone', content: '123 456 789')
+            ]),
       ),
     );
   }
