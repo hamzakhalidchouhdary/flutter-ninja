@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/contact_info.dart';
 import 'package:flutter_app/components/primary_info.dart';
+import 'package:flutter_app/screens/loading.dart';
+import 'package:flutter_app/screens/ninja_profile.dart';
 
 void main() {
   runApp(const NinjaApp());
@@ -12,6 +14,12 @@ class NinjaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const LoadingScreen(),
+        '/home': (context) => const NinjaHome(),
+        '/profile': (context) => const NinjaProfile()
+      },
       title: 'Ninja App',
       theme: ThemeData(
         primarySwatch: Colors.grey,
