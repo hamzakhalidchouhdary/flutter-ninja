@@ -3,6 +3,7 @@ import 'package:flutter_app/components/contact_info.dart';
 import 'package:flutter_app/components/primary_info.dart';
 import 'package:flutter_app/screens/loading.dart';
 import 'package:flutter_app/screens/ninja_profile.dart';
+import 'package:flutter_app/services/get_ninja_list.dart';
 
 void main() {
   runApp(const NinjaApp());
@@ -17,14 +18,16 @@ class NinjaApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const LoadingScreen(),
-        '/home': (context) => const NinjaHome(),
-        '/profile': (context) => const NinjaProfile()
+        '/profile': (context) => const NinjaHome(),
+        '/home': (context) {
+          final NinjaList args = ModalRoute.of(context)?.settings.arguments as NinjaList;
+          return NinjaProfile(data: args);
+        }
       },
       title: 'Ninja App',
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: const NinjaHome(title: 'Ninja IDs'),
     );
   }
 }
