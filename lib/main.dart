@@ -62,6 +62,16 @@ class _NinjaHomeState extends State<NinjaHome> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              CircleAvatar(
+                backgroundImage: AssetImage('ninja1.png'),
+                radius: 70.0,
+                backgroundColor: Colors.amber,
+              ),
+              Divider(
+                height: 50.0,
+                thickness: 1.0,
+                color: Colors.grey,
+              ),
               PrimaryInfo(label: 'name', content: 'Ninja 1'),
               SizedBox(height: 5.0),
               PrimaryInfo(label: 'ninja level', content: '1'),
