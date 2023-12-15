@@ -16,12 +16,21 @@ class MyFlutterApp extends StatefulWidget {
   State<MyFlutterApp> createState() => _MyFlutterAppState();
 }
 
+class PeopleScreen extends StatelessWidget {
+  const PeopleScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(child: Text('Peoples'));
+  }
+}
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Home');
+    return const Center(child: Text('Chats'));
   }
 }
 
@@ -30,7 +39,7 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Search');
+    return const Center(child: Text('Updates'));
   }
 }
 
@@ -39,7 +48,7 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Settings');
+    return const Center(child: Text('Calls'));
   }
 }
 
@@ -49,46 +58,67 @@ class _MyFlutterAppState extends State<MyFlutterApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-          backgroundColor: Colors.amber,
+      home: DefaultTabController(
+        initialIndex: 1,
+        length: 4,
+        child: Scaffold(
+          backgroundColor: Colors.white,
           appBar: AppBar(
-            backgroundColor: Colors.amberAccent,
+            backgroundColor: const Color.fromRGBO(7, 94, 84, 1),
             title: const Text(
-              'My Flutter App',
+              'WhatsApp',
               style: TextStyle(
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
               ),
             ),
-          ),
-          body: Center(
-            child: [
-              const HomeScreen(),
-              const SearchScreen(),
-              const SettingScreen()
-            ][currentIndex],
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: Colors.amber[200],
-            selectedItemColor: Colors.white,
-            currentIndex: currentIndex,
-            onTap: (index) => setState(() {
-              currentIndex = index;
-            }),
-            items: const [
-              BottomNavigationBarItem(
-                label: 'Home',
-                icon: Icon(Icons.home),
+            actionsIconTheme: const IconThemeData(
+              color: Colors.white,
+            ),
+            automaticallyImplyLeading: true,
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.camera_alt_outlined),
+                onPressed: () {},
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                label: 'Search',
+              IconButton(
+                icon: const Icon(Icons.search),
+                onPressed: () {},
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                label: 'Settings',
-              ),
+              IconButton(
+                icon: const Icon(Icons.more_vert),
+                onPressed: () {},
+              )
             ],
-          )),
+            bottom: const TabBar(
+              indicatorColor: Colors.white,
+              indicatorWeight: 3.0,
+              indicatorSize: TabBarIndicatorSize.tab,
+              automaticIndicatorColorAdjustment: true,
+              labelColor: Colors.white,
+              unselectedLabelColor: Color.fromRGBO(18, 140, 126, 1),
+              labelStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+              tabs: [
+                Tab(icon: Icon(Icons.people)),
+                Tab(text: 'Chats'),
+                Tab(text: 'Updates'),
+                Tab(text: 'Calls'),
+              ],
+            ),
+          ),
+          body: const TabBarView(
+            children: [
+              PeopleScreen(),
+              HomeScreen(),
+              SearchScreen(),
+              SettingScreen(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
