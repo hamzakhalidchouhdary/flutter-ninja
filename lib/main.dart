@@ -46,19 +46,6 @@ class SettingScreen extends StatelessWidget {
 class _MyFlutterAppState extends State<MyFlutterApp> {
   int currentIndex = 0;
 
-  Widget getBodyWidget() {
-    switch (currentIndex) {
-      case 0:
-        return const HomeScreen();
-      case 1:
-        return const SearchScreen();
-      case 2:
-        return const SettingScreen();
-      default:
-        return const Placeholder();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -74,7 +61,11 @@ class _MyFlutterAppState extends State<MyFlutterApp> {
             ),
           ),
           body: Center(
-            child: getBodyWidget(),
+            child: [
+              const HomeScreen(),
+              const SearchScreen(),
+              const SettingScreen()
+            ][currentIndex],
           ),
           bottomNavigationBar: BottomNavigationBar(
             backgroundColor: Colors.amber[200],
