@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/contact_info.dart';
 import 'package:flutter_app/components/primary_info.dart';
+import 'package:flutter_app/screens/calls.dart';
+import 'package:flutter_app/screens/chats.dart';
 import 'package:flutter_app/screens/loading.dart';
 import 'package:flutter_app/screens/ninja_profile.dart';
+import 'package:flutter_app/screens/people.dart';
+import 'package:flutter_app/screens/updates.dart';
 import 'package:flutter_app/services/get_ninja_list.dart';
 
 void main() {
@@ -14,42 +18,6 @@ class MyFlutterApp extends StatefulWidget {
 
   @override
   State<MyFlutterApp> createState() => _MyFlutterAppState();
-}
-
-class PeopleScreen extends StatelessWidget {
-  const PeopleScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Peoples'));
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Chats'));
-  }
-}
-
-class SearchScreen extends StatelessWidget {
-  const SearchScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Updates'));
-  }
-}
-
-class SettingScreen extends StatelessWidget {
-  const SettingScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Calls'));
-  }
 }
 
 class _MyFlutterAppState extends State<MyFlutterApp> {
@@ -111,10 +79,10 @@ class _MyFlutterAppState extends State<MyFlutterApp> {
           ),
           body: const TabBarView(
             children: [
-              PeopleScreen(),
-              HomeScreen(),
-              SearchScreen(),
-              SettingScreen(),
+              People(),
+              Chats(),
+              Updates(),
+              Calls(),
             ],
           ),
         ),
