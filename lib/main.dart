@@ -25,6 +25,9 @@ class _MyFlutterAppState extends State<MyFlutterApp> {
 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double peopleTabWidth = deviceWidth / 8;
+    double standardTabWidth = (deviceWidth - peopleTabWidth) / 3;
     return MaterialApp(
       home: DefaultTabController(
         initialIndex: 1,
@@ -58,22 +61,40 @@ class _MyFlutterAppState extends State<MyFlutterApp> {
                 onPressed: () {},
               )
             ],
-            bottom: const TabBar(
+            bottom: TabBar(
               indicatorColor: Colors.white,
               indicatorWeight: 3.0,
               indicatorSize: TabBarIndicatorSize.tab,
               automaticIndicatorColorAdjustment: true,
               labelColor: Colors.white,
-              unselectedLabelColor: Color.fromRGBO(18, 140, 126, 1),
-              labelStyle: TextStyle(
+              unselectedLabelColor: const Color.fromRGBO(18, 140, 126, 1),
+              labelStyle: const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
+              isScrollable: true,
+              labelPadding: const EdgeInsets.symmetric(horizontal: 0.0),
+              tabAlignment: TabAlignment.center,
               tabs: [
-                Tab(icon: Icon(Icons.people)),
-                Tab(text: 'Chats'),
-                Tab(text: 'Updates'),
-                Tab(text: 'Calls'),
+                SizedBox(
+                  width: peopleTabWidth,
+                  child: const Tab(
+                    icon: Icon(Icons.people),
+                    iconMargin: EdgeInsets.all(0),
+                  ),
+                ),
+                SizedBox(
+                  width: standardTabWidth,
+                  child: const Tab(text: 'Chats'),
+                ),
+                SizedBox(
+                  width: standardTabWidth,
+                  child: const Tab(text: 'Updates'),
+                ),
+                SizedBox(
+                  width: standardTabWidth,
+                  child: const Tab(text: 'Calls'),
+                ),
               ],
             ),
           ),
