@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Chats extends StatelessWidget {
   const Chats({super.key});
 
-  static List<String> entries = <String>['A', 'B', 'C', 'D', 'E', 'F', 'D'];
+  static List<String> entries = <String>['A', 'B', 'C', 'D', 'E', 'F', 'D', 'A', 'B', 'C', 'D', 'E', 'F', 'D'];
   static List<int> colorCodes = <int>[600, 500, 100];
 
   @override
